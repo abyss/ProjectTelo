@@ -19,14 +19,14 @@ exports.run = async (msg, args) => {
     await bot.db.set(msg.guild, 'lockTimer', lockTimer);
 
     await bot.db.set(msg.guild, 'lock', false);
-    await send(msg.channel, ':unlock:  |  **Mason Chat is now unlocked**');
+    await send(msg.channel, ':unlock:  |  **Messenger Daemon is now online**');
 
     let players = await bot.db.get(msg.guild, 'players');
     if (typeof players === 'undefined') players = [];
 
     await asyncForEach(players, async uid => {
         const user = bot.client.users.get(uid);
-        await send(user, ':unlock:  |  **Mason Chat is now unlocked**');
+        await send(user, ':unlock:  |  **Messenger Daemon is now online**');
     });
 };
 

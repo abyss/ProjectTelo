@@ -4,14 +4,14 @@ const { asyncForEach } = require('../../../utils/general');
 
 exports.run = async (msg) => {
     await bot.db.set(msg.guild, 'lock', true);
-    await send(msg.channel, ':lock:  |  **Mason Chat is now locked**');
+    await send(msg.channel, ':lock:  |  **Messenger Daemon is now offline**');
 
     let players = await bot.db.get(msg.guild, 'players');
     if (typeof players === 'undefined') players = [];
 
     await asyncForEach(players, async uid => {
         const user = bot.client.users.get(uid);
-        await send(user, ':lock:  |  **Mason Chat is now locked**');
+        await send(user, ':lock:  |  **Messenger Daemon is now offline**');
     });
 };
 

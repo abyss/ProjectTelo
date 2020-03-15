@@ -13,7 +13,7 @@ exports.run = async (msg, args) => {
         const modMentions = currentMods.map(userid => `<@${userid}>`);
         const output = new RichEmbed()
             .setColor(randomColor())
-            .setTitle('Project Telo Mods:')
+            .setTitle('Messenger Daemon Mods:')
             .setDescription(modMentions.join('\n'));
 
         await send(msg.channel, { embed: output });

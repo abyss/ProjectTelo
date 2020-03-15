@@ -22,14 +22,14 @@ async function unlockTimer() {
     if (timer.isBefore()) {
         await bot.db.set(primaryGuildId, 'lockTimer', 0);
         await bot.db.set(primaryGuildId, 'lock', true);
-        await send(modChannel, ':lock:  |  **Mason Chat is now locked**');
+        await send(modChannel, ':lock:  |  **Messenger Daemon is now offline**');
 
         let players = await bot.db.get(primaryGuildId, 'players');
         if (typeof players === 'undefined') players = [];
 
         await asyncForEach(players, async uid => {
             const user = bot.client.users.get(uid);
-            await send(user, ':lock:  |  **Mason Chat is now locked**');
+            await send(user, ':lock:  |  **Messenger Daemon is now offline**');
         });
     }
 }
@@ -53,7 +53,7 @@ bot.client.on('message', async message => {
     const locked = await bot.db.get(primaryGuildId, 'lock') || false;
     if (locked) {
         await message.react('❌');
-        await send(message.channel, ':x:  |  Mason Chat is currently locked!');
+        await send(message.channel, ':x:  |  Messenger Daemon is currently offline');
         return;
     }
 

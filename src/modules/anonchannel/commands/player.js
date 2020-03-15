@@ -13,7 +13,7 @@ exports.run = async (msg, args) => {
         const playerMentions = currentPlayers.map(userid => `<@${userid}>`);
         const output = new RichEmbed()
             .setColor(randomColor())
-            .setTitle('Project Telo Players:')
+            .setTitle('Messenger Daemon Players:')
             .setDescription(playerMentions.join('\n'));
 
         await send(msg.channel, { embed: output });
