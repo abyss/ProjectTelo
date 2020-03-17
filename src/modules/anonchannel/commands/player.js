@@ -46,7 +46,7 @@ exports.usage = usage;
 exports.config = {
     name: 'Set Players',
     cmd: 'player',
-    alias: [],
+    alias: ['players'],
     botPermissions: [], // Permissions needed by the bot to use this command.
     defaultPermissions: ['MANAGE_GUILD'], // Default permissions to use this command by user
     location: 'GUILD_ONLY', // 'GUILD_ONLY', 'DM_ONLY', 'ALL'
