@@ -63,6 +63,10 @@ bot.client.on('message', async message => {
         return;
     }
 
+    let result;
+    result = await bot.db.get(primaryGuildId, 'anonymous');
+    if (typeof result == 'undefined') result = true;
+
     const color = randomColor();
     await asyncForEach(players, async uid => {
         if (uid == message.author.id) return; // Skip sender
@@ -71,6 +75,11 @@ bot.client.on('message', async message => {
         const output = new RichEmbed()
             .setColor(color)
             .setDescription(message.content);
+
+        if (!result) {
+            output.setFooter(message.author.username, message.author.avatarURL)
+                .setTimestamp(message.createdAt);
+        }
 
         await send(user, { embed: output });
     });
